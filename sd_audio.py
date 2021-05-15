@@ -1,6 +1,7 @@
 import argparse
 from pydub import AudioSegment
 from pydub.playback import play
+import os
 
 
 def add_args():
@@ -14,7 +15,8 @@ def add_args():
 
 
 def play_file(file_name):
-    mp3_path = f"res/{file_name}.mp3"
+    base_path = os.path.dirname(__file__)
+    mp3_path = f"{base_path}/res/{file_name}.mp3"
     file_sound = AudioSegment.from_mp3(mp3_path)
     file_sound = file_sound
     play(file_sound)
