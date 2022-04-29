@@ -10,7 +10,7 @@ def add_args():
     parser.add_argument('file', choices=['crumbs', 'deejay', 'dr_who',
                                          'fanceee', 'victory',
                                          'glitter_attack', 'horny_jail',
-                                         'i_alone', 'princess', 'taps',
+                                         'a_chicken', 'princess', 'f',
                                          'that_doesnt', 'yikes_forever',
                                          'wrestling'])
     return parser
@@ -27,6 +27,11 @@ def get_random_file(file_path):
 def play_file(file_name):
     if file_name in ('wrestling', 'dr_who'):
         file_name = get_random_file(file_name)
+    if file_name == 'deejay':
+        if random.randint(1, 5) == 1:
+            file_name = 'fucks_sake_dj'
+        else:
+            file_name = 'deejay2'
     base_path = os.path.dirname(__file__)
     mp3_path = f"{base_path}/res/{file_name}.mp3"
     file_sound = AudioSegment.from_mp3(mp3_path)
